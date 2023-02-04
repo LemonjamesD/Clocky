@@ -4,7 +4,7 @@ use std::fs::{File, OpenOptions};
 use std::io::{Write, Read};
 
 fn r#in(command_args: Vec<String>) {
-    let name = &command_args[1];
+    let name = &command_args[1].replace(".clock", "");
     let mut file = OpenOptions::new()
                     .read(true)
                     .write(true)
@@ -18,7 +18,7 @@ fn r#in(command_args: Vec<String>) {
 }
 
 fn out(command_args: Vec<String>) {
-    let name = &command_args[1];
+    let name = &command_args[1].replace(".clock", "");
     let mut file = OpenOptions::new()
                     .read(true)
                     .write(true)
@@ -32,12 +32,12 @@ fn out(command_args: Vec<String>) {
 }
 
 fn register(command_args: Vec<String>) {
-    let name = &command_args[1];
+    let name = &command_args[1].replace(".clock", "");
     File::create(format!("{name}.clock")).unwrap();
 }
 
 fn get_hours(command_args: Vec<String>) {
-    let name = &command_args[1];
+    let name = &command_args[1].replace(".clock", "");
 
     let mut file = File::open(format!("{name}.clock")).unwrap();
     let mut contents = String::new();
