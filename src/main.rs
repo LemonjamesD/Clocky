@@ -68,7 +68,8 @@ fn get_hours(command_args: Vec<String>) {
         snd - fst
     }).collect::<Vec<Duration>>();
     let time: Duration = split5.into_iter().sum();
-    println!("Time Spent: {time:?}");
+    let humantime: humantime::Duration = time.into(); 
+    println!("Time Spent: {humantime}");
 }
 
 fn main() {
